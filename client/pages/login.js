@@ -1,3 +1,5 @@
+import styles from "../styles/Home.module.css";
+
 import {
   Container,
   Form,
@@ -10,9 +12,9 @@ import {
 const Login = () => {
   return (
     <>
-      <Container fluid className="d-flex justify-content-center">
+      <Container fluid>
         <Row>
-          <Col>
+          <Col lg={4}>
             <h1>Login In</h1>
             <Form>
               <FloatingLabel

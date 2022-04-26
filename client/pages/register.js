@@ -92,14 +92,15 @@ const Register = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </FloatingLabel>
-
-              <Button
-                variant="primary"
-                type="submit"
-                className="rounded-pill btn-lg d-flex justify-content-center"
-              >
-                Submit
-              </Button>
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="rounded-pill btn-lg"
+                >
+                  Submit
+                </Button>
+              </div>
             </Form>
           </Col>
         </Row>

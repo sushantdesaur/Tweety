@@ -1,17 +1,27 @@
 const express = require("express");
+import cors from "cors";
+import { readdirSync } from "fs";
+const morgan = require("morgan");
+import "dotenv/config";
 
-// Initialize the express app
+// Create express app
 const app = express();
 
-// Port Number
-const port = 5000;
+// apply middleware
+app.use(cors());
+app.use(express.json());
+app.use(morgan("dev"));
+
+// route
+
+readdirSync("./routes").map((r) => {
+  app.use("/api", require(`./routes/${r}`));
+});
+
+// Port
+const port = process.env.PORT || 8000;
+console.log(port);
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-app.get('/', (req, res, next) => {
- res.status(200).send("OK")
-})
-
-

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import {
   Container,
@@ -15,10 +16,17 @@ const Register = () => {
   const [birth, setBirth] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-      // Prevent browser from refreshing
-      e.preventDefault();
-      console.table({name, email, birth,password});
+  const handleSubmit = async (e) => {
+    // Prevent browser from refreshing
+    e.preventDefault();
+
+    const { data } = await axios.post(`http://localhost:8000/api/register`, {
+      name,
+      email,
+      password,
+    });
+    console.log("REGISTER RESPONSE =>", data);
+    // console.table({name, email, birth,password});
   };
 
   return (

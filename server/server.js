@@ -1,26 +1,38 @@
+// server.js
+
+// Import packages here
 const express = require("express");
 import cors from "cors";
 import { readdirSync } from "fs";
-const morgan = require("morgan");
 import "dotenv/config";
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+
 
 // Create express app
 const app = express();
 
-// apply middleware
+// Database
+mongoose
+  .connect(process.env.DATABASE)
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log("DB Error => ", err));
+
+// Apply middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// route
-
+// Import Routes
 readdirSync("./routes").map((r) => {
   app.use("/api", require(`./routes/${r}`));
 });
 
-// Port
+
+
+
+// Set Port
 const port = process.env.PORT || 8000;
-console.log(port);
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

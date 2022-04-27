@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function Home() {
@@ -13,12 +14,13 @@ export default function Home() {
         <title>Tweety</title>
         <meta
           name="description"
-          content="Twiiter Clone using React and Next.js"
+          content="Twitter Clone using React and Next.js"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
+        <Login></Login>
         <button className="btn btn-primary" type="submit">Logout</button>
       </main>
 

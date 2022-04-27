@@ -1,14 +1,10 @@
 const express = require("express");
-
 const next = require("next");
-
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-// Check if we are in development
 const dev = process.env.NODE_ENV !== "production";
 
 const app = next({ dev });
-
 const handle = app.getRequestHandler();
 
 app
@@ -20,18 +16,17 @@ app
       server.use(
         "/api",
         createProxyMiddleware({
-          target: "http://locahost:8000",
+          target: "http://localhost:8000",
           changeOrigin: true,
         })
       );
     }
     server.all("*", (req, res) => {
-        return handle(req, res);
+      return handle(req, res);
     });
-
     server.listen(3000, (err) => {
-        if (err) throw err;
-        console.log("> Proxy ready on  http://localhost:8000")
+      if (err) throw err;
+      console.log("> Ready on http://localhost:8000");
     });
   })
   .catch((err) => {

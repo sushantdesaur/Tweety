@@ -10,6 +10,9 @@ import {
 } from "react-bootstrap";
 
 const Login = () => {
+  const handleSubmit = () => {
+    console.log("LOGIN RESPONSE => ")
+  }
 
   return (
     <>
@@ -17,7 +20,7 @@ const Login = () => {
         <Row>
           <Col lg={4}>
             <h1>Login In</h1>
-            <Form onSubmit={onSubmit}>
+            <Form onSubmit={handleSubmit}>
               <FloatingLabel
                 controlId="floatingInput"
                 label="Email address"

@@ -21,12 +21,14 @@ const Register = () => {
     // Prevent browser from refreshing
     e.preventDefault();
 
-    const { data } = await axios.post(`http://localhost:8000/api/register`, {
-      name,
-      username,
-      email,
-      password,
-    });
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/register`,
+      {
+        name,
+        username,
+        email,
+        password,
+      }
+    );
     console.log("REGISTER RESPONSE =>", data);
     // console.table({name, email, birth,password});
   };

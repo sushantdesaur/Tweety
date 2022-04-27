@@ -33,7 +33,7 @@ const userSchema = new Schema(
     },
     dark_mode: {
       type: Boolean,
-      required: true,
+      default: false,
     },
   },
   { timestamps: true }

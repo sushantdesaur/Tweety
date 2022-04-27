@@ -12,8 +12,9 @@ import {
 
 const Register = () => {
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("");
+  // const [birth, setBirth] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
@@ -22,6 +23,7 @@ const Register = () => {
 
     const { data } = await axios.post(`http://localhost:8000/api/register`, {
       name,
+      username,
       email,
       password,
     });
@@ -54,6 +56,22 @@ const Register = () => {
 
               <FloatingLabel
                 controlId="floatingInput"
+                label="Username"
+                className="mb-3"
+              >
+                <Form.Control
+                  type="text"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <Form.Text className="text-muted">
+                  Enter username
+                </Form.Text>
+              </FloatingLabel>
+
+              <FloatingLabel
+                controlId="floatingInput"
                 label="Email address"
                 className="mb-3"
               >
@@ -67,7 +85,7 @@ const Register = () => {
                   We'll never share your email with anyone else.
                 </Form.Text>
               </FloatingLabel>
-
+              {/* 
               <FloatingLabel
                 controlId="floatingInput"
                 label="Date of birth"
@@ -78,7 +96,7 @@ const Register = () => {
                   value={birth}
                   onChange={(e) => setBirth(e.target.value)}
                 />
-              </FloatingLabel>
+              </FloatingLabel> */}
 
               <FloatingLabel
                 controlId="floatingPassword"

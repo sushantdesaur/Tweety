@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { Context } from "../context";
+import { useRouter } from "next/router";
 
 import {
   Container,
@@ -10,13 +12,19 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 
-const Register = () => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
+const Login = () => {
   const [email, setEmail] = useState("");
-  // const [birth, setBirth] = useState("");
   const [password, setPassword] = useState("");
 
+  //state
+  const {state, dispatch} = useContext(Context)
+
+  // router
+  const router = useRouter()
+
+  console.log("STATE =>", state)
+
+ 
   const handleSubmit = async (e) => {
     // Prevent browser from refreshing
     e.preventDefault();
@@ -26,7 +34,18 @@ const Register = () => {
         email,
         password,
       });
-      console.log("REGISTER RESPONSE =>", data);
+      // console.log("LOGIN RESPONSE =>", data);
+       dispatch({
+         type: "LOGIN",
+         payload: data,
+       });
+
+       // save in local storage
+       window.localStorage.setItem('user', JSON.stringify(data))
+
+       // redirect 
+       router.push('/')
+
       // console.table({name, email, birth,password});
     } catch (err) {
       console.log(err.response.data)
@@ -85,4 +104,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

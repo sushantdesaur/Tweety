@@ -1,4 +1,5 @@
-import styles from "../styles/Home.module.css";
+import { useState } from "react";
+import axios from "axios";
 
 import {
   Container,
@@ -9,24 +10,47 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 
-const Login = () => {
-  const handleSubmit = () => {
-    console.log("LOGIN RESPONSE => ")
-  }
+const Register = () => {
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  // const [birth, setBirth] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    // Prevent browser from refreshing
+    e.preventDefault();
+
+    try {
+      const { data } = await axios.post(`/api/login`, {
+        email,
+        password,
+      });
+      console.log("REGISTER RESPONSE =>", data);
+      // console.table({name, email, birth,password});
+    } catch (err) {
+      console.log(err.response.data)
+    }
+  };
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="d-flex justify-content-center">
         <Row>
-          <Col lg={4}>
-            <h1>Login In</h1>
+          <Col>
+            <h1>Login</h1>
             <Form onSubmit={handleSubmit}>
               <FloatingLabel
                 controlId="floatingInput"
                 label="Email address"
                 className="mb-3"
               >
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
@@ -37,16 +61,22 @@ const Login = () => {
                 label="Password"
                 className="mb-3"
               >
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </FloatingLabel>
-
-              <Button
-                variant="primary"
-                type="submit"
-                className="rounded-pill btn-lg d-flex justify-content-center"
-              >
-                Submit
-              </Button>
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="rounded-pill btn-lg"
+                >
+                  Submit
+                </Button>
+              </div>
             </Form>
           </Col>
         </Row>
@@ -55,4 +85,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -19,7 +19,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-  
+        <button className="btn btn-primary" type="submit">Logout</button>
       </main>
 
       <footer className={styles.footer}>

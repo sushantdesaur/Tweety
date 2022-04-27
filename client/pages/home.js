@@ -1,19 +1,21 @@
 // pages/home.js
 import styles from "../styles/Home.module.css";
 import { Container, Row, Col, Nav } from "react-bootstrap";
+
 import Header from "../components/header"
+import Tweet from "../components/Tweet";
 
 const Home = () => {
   return (
     <>
       <Container className={styles.container}>
-        <h1>Home</h1>
+        <h1>Tweety</h1>
         <Row>
           <Col>
-            <Header className=" d-flex justify-content-center" />
+            <Header />
           </Col>
           <Col>
-            <main></main>
+            <Tweet style={{ color: "black" }} />
           </Col>
           <Col>
             <footer></footer>

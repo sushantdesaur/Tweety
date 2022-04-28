@@ -17,6 +17,11 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@emoji-mart/data@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@emoji-mart/data/-/data-1.0.1.tgz#76ca80a7b6d02706ec329116d6e4518bb3453ad2"
+  integrity sha512-5X6DbIdyFvSFMfGdPkPd/yxQmtfMptZg5UUSL+afb39SdbPvobJY7VhzGM0IekxjszW3ygxZ2X5mVhy5AqF5vQ==
+
 "@eslint/eslintrc@^1.2.2":
   version "1.2.2"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-1.2.2.tgz"
@@ -747,6 +752,11 @@ electron-to-chromium@^1.4.118:
   version "1.4.123"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.123.tgz#de88ea7fd29d7c868e63c88f129e91494bcf3266"
   integrity sha512-0pHGE53WkYoFbsgwYcVKEpWa6jbzlvkohIEA2CUoZ9b5KC+w/zlMiQHvW/4IBcOh7YoEFqRNavgTk02TBoUTUw==
+
+emoji-mart@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-5.0.0.tgz#1c16bf4e675c59c08a73b11e385cf1cc4d425b27"
+  integrity sha512-4O75LxV/RPOrtC9+0qhHhfPgJgW/Kwc4zv15h190liC3vJ/5RVibIrnPlDZ0xqYx0bPVOy3W/QcDTZY+jq1qOw==
 
 emoji-regex@^9.2.2:
   version "9.2.2"

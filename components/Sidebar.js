@@ -14,6 +14,7 @@ import SidebarLink from "./SidebarLink";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
+
 function Sidebar() {
   const { data: session } = useSession();
 
@@ -32,7 +33,7 @@ function Sidebar() {
         <SidebarLink text="Profile" Icon={UserIcon} />
         <SidebarLink text="More" Icon={DotsCircleHorizontalIcon} />
       </div>
-      <button className="hidden xl:inline ml-auto bg-[#1d9bf0] text-white rounded-full w-56 h-[52px] text-lg font-bold shadow-md hover:bg-[#1a8cd8]">
+      <button className="hidden xl:inline ml-auto bg-[#1d9bf0] text-white rounded-full w-56 h-[52px] text-lg font-bold shadow-md hover:bg-[#1a8cd8]" onClick={() => alert("Let's Tweet")}>
         Tweet
       </button>
       <div

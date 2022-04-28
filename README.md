@@ -2,7 +2,7 @@
 
 ## Installation
 
-Created .env.local
+Create .env.local
 
 ```
 GOOGLE_CLIENT_ID="client_id"

@@ -13,7 +13,7 @@ function Login({ providers }) {
             objectFit="contain"
           ></Image>
         </div>
-        <div className="flex flex-col pl-[150px]">
+        <div className="flex flex-col pl-[240px]">
           <Image
             src="https://rb.gy/ogau5a"
             width={150}

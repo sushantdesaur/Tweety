@@ -4,13 +4,12 @@ import Image from "next/image";
 function Login({ providers }) {
   return (
 
-      <div className="flex flex-row items-center">
-        <div className="flex flex-col">
+      <div className="flex flex-row items-center mx-auto my-auto">
+        <div className="flex">
           <Image
             src="/index.png"
-            width={900}
-            height={800}
-            objectFit="contain"
+            width={1000}
+            height={1000}
           ></Image>
         </div>
         <div className="flex flex-col pl-[240px]">

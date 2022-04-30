@@ -17,7 +17,7 @@ export default function Home({ trendingResults, followResults, providers }) {
   return (
     <div className="">
       <Head>
-        <title>Home / Twitter</title>
+        <title>Home / Tweety</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

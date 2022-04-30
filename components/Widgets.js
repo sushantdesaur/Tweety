@@ -1,8 +1,15 @@
 import { SearchIcon } from "@heroicons/react/outline";
 import Trending from "./Trending";
 import Image from "next/image";
+import { useState }from 'react';
 
 function Widgets({ trendingResults, followResults }) {
+  const [search, setSearch] = useState("")
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log(search);
+    }
+  };
   return (
     <div className="hidden lg:inline ml-8 xl:w-[450px] py-1 space-y-5">
       <div className="sticky top-0 py-1.5 bg-black z-50 w-11/12 xl:w-9/12">
@@ -11,7 +18,9 @@ function Widgets({ trendingResults, followResults }) {
           <input
             type="text"
             className="bg-transparent placeholder-gray-500 outline-none text-[#d9d9d9] absolute inset-0 pl-11 border border-transparent w-full focus:border-[#1d9bf0] rounded-full focus:bg-black focus:shadow-lg"
-            placeholder="Search Twitter"
+            placeholder="Search Tweety"
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>

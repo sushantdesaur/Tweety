@@ -2,30 +2,47 @@ import { SearchIcon } from "@heroicons/react/outline";
 import Trending from "./Trending";
 import Image from "next/image";
 import { useState }from 'react';
-
+import { useRouter } from "next/router";
 import {
   collection,
-  deleteDoc,
-  doc,
   onSnapshot,
-  orderBy,
   query,
-  setDoc,
+  where,
 } from "@firebase/firestore";
+
+
 import { db } from "../firebase";
 
 
 
 
 function Widgets({ trendingResults, followResults }) {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+
+  const router = useRouter();
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log(search)
+      console.log(search);
       let searchInputToLower = search.toLowerCase();
 
       let searchInputToUpper = search.toUpperCase();
-      console.log({ searchInputToLower , searchInputToUpper});
+      console.log({ searchInputToLower, searchInputToUpper });
+
+      const colRef = collection(db, "posts");
+
+      const q = query(colRef, where("text", "==", `${search}`));
+
+      onSnapshot(q, (snapshot) => {
+        let post = [];
+        snapshot.docs.forEach((doc) => {
+          post.push({ id: doc.id });
+        });
+        
+        const re = post[0].id
+        console.log(re)
+        router.push(`/${re}`);
+      });
     }
   };
   return (

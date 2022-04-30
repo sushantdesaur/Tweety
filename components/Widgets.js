@@ -1,48 +1,40 @@
 import { SearchIcon } from "@heroicons/react/outline";
 import Trending from "./Trending";
 import Image from "next/image";
-import { useState }from 'react';
+import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  collection,
-  onSnapshot,
-  query,
-  where,
-} from "@firebase/firestore";
-
+import { collection, onSnapshot, query, where } from "@firebase/firestore";
 
 import { db } from "../firebase";
-
-
-
+import { async } from "@firebase/util";
 
 function Widgets({ trendingResults, followResults }) {
   const [search, setSearch] = useState("");
 
   const router = useRouter();
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      console.log(search);
-      let searchInputToLower = search.toLowerCase();
+  const handleKeyDown = async (e) => {
+    try {
+      if (e.key === "Enter") {
+        console.log(search);
 
-      let searchInputToUpper = search.toUpperCase();
-      console.log({ searchInputToLower, searchInputToUpper });
+        const colRef = collection(db, "posts");
 
-      const colRef = collection(db, "posts");
+        const q = await query(colRef, where("text", "==", `${search}`));
 
-      const q = query(colRef, where("text", "==", `${search}`));
+        onSnapshot(q, (snapshot) => {
+          let post = [];
+          snapshot.docs.forEach((doc) => {
+            post.push({ id: doc.id });
+          });
 
-      onSnapshot(q, (snapshot) => {
-        let post = [];
-        snapshot.docs.forEach((doc) => {
-          post.push({ id: doc.id });
+          const re = post[0].id;
+          console.log(re);
+          router.push(`/${re}`);
         });
-        
-        const re = post[0].id
-        console.log(re)
-        router.push(`/${re}`);
-      });
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
   return (

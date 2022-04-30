@@ -20,7 +20,7 @@ function Widgets({ trendingResults, followResults }) {
 
         const colRef = collection(db, "posts");
 
-        const q = await query(colRef, where("text", "==", `${search}`));
+        const q = query(colRef, where("text", "==", `${search}`));
 
         onSnapshot(q, (snapshot) => {
           let post = [];

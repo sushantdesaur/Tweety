@@ -3,11 +3,29 @@ import Trending from "./Trending";
 import Image from "next/image";
 import { useState }from 'react';
 
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc,
+} from "@firebase/firestore";
+import { db } from "../firebase";
+
+
+
+
 function Widgets({ trendingResults, followResults }) {
   const [search, setSearch] = useState("")
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log(search);
+      console.log(search)
+      let searchInputToLower = search.toLowerCase();
+
+      let searchInputToUpper = search.toUpperCase();
+      console.log({ searchInputToLower , searchInputToUpper});
     }
   };
   return (

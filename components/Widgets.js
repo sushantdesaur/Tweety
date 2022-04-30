@@ -27,10 +27,13 @@ function Widgets({ trendingResults, followResults }) {
           snapshot.docs.forEach((doc) => {
             post.push({ id: doc.id });
           });
-
-          const re = post[0].id;
-          console.log(re);
-          router.push(`/${re}`);
+          try {
+              const re = post[0].id;
+              console.log(re);
+              router.push(`/${re}`);
+          } catch (err) {
+            console.log("Not Found because text is strict type=>", err)
+          }
         });
       }
     } catch (err) {

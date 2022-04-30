@@ -6,7 +6,7 @@ function Login({ providers }) {
     <div className="bg-black min-h-screen flex max-w-[1500px] mx-auto">
       <div className="flex">
         <img
-          className="min-h-screen flex xl:max-w-[800px] mx-auto"
+          className="min-h-screen flex xl:max-w-[900px] mx-auto"
           src="./index.png"
         />
       </div>
